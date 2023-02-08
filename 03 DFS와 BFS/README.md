@@ -66,19 +66,3 @@ bfs(1)
 ### 정리
 - DFS는 재귀함수와 for문으로 구현
 - BFS는 큐(Kotlin에서는 LinkedList)와 while+for문으로 구현
-
-## ✅ 문제를 풀어보자!
-- [DFS와 BFS](https://www.acmicpc.net/problem/1260) (기본)
-### BFS
-1. [단지번호 붙이기](https://www.acmicpc.net/problem/2667) (기본)
-2. [미로 탐색](https://www.acmicpc.net/problem/2178) (기본)
-3. [연구소](https://www.acmicpc.net/problem/14502) (응용)
-4. [아기상어](https://www.acmicpc.net/problem/16236) (응용)
-5. [다리만들기](https://www.acmicpc.net/problem/2146) (응용)
-6. [치즈](https://www.acmicpc.net/problem/2638) (응용)
-### DFS
-1. [단지번호 붙이기](https://www.acmicpc.net/problem/2667)(기본) dfs로 풀어보기
-2. [안전영역](https://www.acmicpc.net/problem/2468) (응용)
-3. [적록색약](https://www.acmicpc.net/problem/10026) (응용)
-4. [알파벳](https://www.acmicpc.net/problem/1987) (응용)
-5. [양구출작전](https://www.acmicpc.net/problem/16437) (응용)
