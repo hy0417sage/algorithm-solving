@@ -1,0 +1,80 @@
+## 아기상어
+- https://www.acmicpc.net/problem/16236
+~~~python
+from collections import deque
+import copy
+
+n = int(input())
+graph = [list(map(int, input().split())) for _ in range(n)]
+
+dx, dy = [0, 0, -1, 1], [-1, 1, 0, 0]
+
+def bfs(baby_size, time, x, y):
+    q = deque([(time, x, y)])
+    visited = [[False] * n for _ in range(n)]
+    visited[x][y] = True
+    
+    while q:
+        time, x, y = q.popleft()
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+            if 0 <= nx < n and 0 <= ny < n and visited[nx][ny] == False:
+                if graph[nx][ny] == 0:
+                    q.append((time + 1, nx, ny))
+                    visited[nx][ny] = True
+                elif graph[nx][ny] < baby_size:
+                    return baby_size + 1, time, nx, ny #아기 상어가 이동한 위치
+                else: 
+                    visited[nx][ny] = True
+                    
+    return -1, -1, -1, -1
+
+result_time = 0
+x, y = 0, 0
+for i in range(n):
+    for j in range(n):
+        if graph[i][j] == 9:
+            x, y = i, j
+            
+def resultShark(baby_size, x, y):
+    global result_time
+    baby_size_now, time, nx, ny = bfs(baby_size, 0, x, y)
+    if baby_size_now != -1:
+        result_time += time
+        resultShark(baby_size_now, nx, ny)
+    else:
+        print(result_time)
+        return
+       
+resultShark(2, x, y)
+
+~~~
+
+### 문제풀이 - (문제 풀이 실패, 다시 풀어봐야 할 것 같다)
+1. 잡아먹을 물고기가 없을 때, 물고기의 크기가 아기상어보다 클 때
+2. 아기상어 위치에서 넓은 탐색을 하면서 잡아먹을 물고기를 찾는다. 찾는 과정은 visited로 조건을 만들었다.
+  - 조건1 방문한 곳의 숫자가 0일때 (물고기가 없을 때) visitied 방문처리하고 그 자리로 아기상어가 간다. append
+  - 조건2 방문한 곳에 물고기가 있는데 아기상어보다 작을 경우 return 아기상어의 잡아먹은 후 크기와 머무를 위치를 반환
+  - 조건3 방문하려고 하는 곳에 아기상어보다 큰 물고기가 있을 경우, 방문할 수 없으니 append는 하지 않되, True 처리하고 넘어간다.
+  (반복하기)
+3. 다음과 같은 조건을 재귀로 반복하고 이제 더이상 잡아먹을 물고기가 없을 시 -1을 리턴
+
+#### 오류 
+RecursionError: maximum recursion depth exceeded in comparison, 
+- 이 에러를 해결하는 방법은 2가지가 있다고 
+첫 번째는 재귀 함수를 사용하지 않는 것입니다. 소스 1은 소스 2와 같이 재귀 함수를 사용하지 않는 방법으로도 구현할 수 있습니다.
+  - DFS를 이용했다면 BFS로, 다이나믹 프로그래밍을 재귀로 구현했다면 반복문으로 구현하는 것 처럼 재귀를 사용하지 않게 구현하는 방법으로 해결할 수 있습니다.
+  - 두 번째는 sys.setrecursionlimit()을 사용하는 것입니다. 이 함수를 사용하면, Python이 정한 최대 재귀 갚이를 변경할 수 있습니다. 소스 1의 최대 재귀 깊이를 1,000,000 정도로 크게 설정하면 런타임 에러 없이 실행이 됩니다.
+  ~~~python
+  import sys
+  sys.setrecursionlimit(10**6)
+  def calc(n):
+      if n == 0:
+          return 0
+      else:
+          return n + calc(n-1)
+
+  n = int(input())
+  print(calc(n))
+  ~~~
