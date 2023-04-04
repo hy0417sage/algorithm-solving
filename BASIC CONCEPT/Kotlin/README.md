@@ -1,7 +1,5 @@
 # ✍🏻 2023년
 
-## 2023-02
-### 23-02-02 - 코틀린 기초
 1. 이메일 주소 구분하기 > [코드](/Kotlin/22-02-02/01%20%EC%9D%B4%EB%A9%94%EC%9D%BC%20%EC%A3%BC%EC%86%8C%20%EA%B5%AC%EB%B6%84%ED%95%98%EA%B8%B0.kt)
 2. 문자의 길이와 짝수인지 확인하는 배열 출력하기 > [코드](/Kotlin/22-02-02/02%20%EB%AC%B8%EC%9E%90%EC%9D%98%20%EA%B8%B8%EC%9D%B4%EC%99%80%20%EC%A7%9D%EC%88%98%EC%9D%B8%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94%20%EB%B0%B0%EC%97%B4%20%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0.kt)
 3. 리스트에 있는 숫자들을 모두 더한 후 리스트의 갯수로 나눈 값을 출력하기 > [코드](/Kotlin/22-02-02/03%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%97%90%20%EC%9E%88%EB%8A%94%20%EC%88%AB%EC%9E%90%EB%93%A4%EC%9D%84%20%EB%AA%A8%EB%91%90%20%EB%8D%94%ED%95%9C%20%ED%9B%84%20%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98%20%EA%B0%AF%EC%88%98%EB%A1%9C%20%EB%82%98%EB%88%88%20%EA%B0%92%EC%9D%84%20%EC%B6%9C%EB%A0%A5.kt)
@@ -9,5 +7,13 @@
 5. 숫자를 받아서 팩토리얼 값을 출력하기 > [코드](/Kotlin/22-02-02/05%20%EC%88%AB%EC%9E%90%EB%A5%BC%20%EB%B0%9B%EC%95%84%EC%84%9C%20%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC%20%EA%B0%92%EC%9D%84%20%EC%B6%9C%EB%A0%A5.kt)
 6. 문자의 갯수를 큰 순서대로 확인하기 > [코드](/Kotlin/22-02-02/06%20%EB%AC%B8%EC%9E%90%EC%9D%98%20%EA%B0%AF%EC%88%98%EB%A5%BC%20%ED%81%B0%20%EC%88%9C%EC%84%9C%EB%8C%80%EB%A1%9C%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0.kt)
 
-## 2023년 01월
-- Python으로 프로그래머스 Level1 60 문제풀이
+~~~kotlin
+// 중복 지우기
+리스트.distinct()
+
+// count 같은 값(숫자 등) 갯수 구하기
+resultArr.filter{it == i}.count()
+
+// 두번째 숫자를 기준으로 리스트를 큰수대로 정렬 / map -> list -> map 형변환
+answerMap.toList().sortedBy { it.second }.reversed().toMap()
+~~~
